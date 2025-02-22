@@ -129,7 +129,7 @@ public class Menu {
 				var buscaBrecho = brechos.buscarNaCollection(numero);
 				
 				if(buscaBrecho != null) {
-					tipo = buscaBrecho.getTipo();
+					//tipo = buscaBrecho.getTipo();
 					
 					System.out.println("Digite o Nome do Brechó:  ");
 					scanner.skip("\\R?");
@@ -137,17 +137,19 @@ public class Menu {
 					System.out.println("Digite o Nome do Titular: ");
 					scanner.skip("\\R?");
 					titular = scanner.nextLine();
+					System.out.println("Digite o Tipo do Brechó (F/M): ");
+					tipo = scanner.nextLine();
 					System.out.println("Digite o Saldo do Brechó (R$): ");
 					saldo = scanner.nextFloat();
 					
 					switch(tipo) {
 					case "F" -> {
 						genero = "feminino";
-						brechos.cadastrar(new BrechoFeminino(brechos.gerarNumero(), nomeBrecho, tipo, titular, saldo, genero));
+						brechos.atualizar(new BrechoFeminino(numero, nomeBrecho, tipo, titular, saldo, genero));
 					}
 					case "M" -> {
 						genero = "masculino";
-						brechos.cadastrar(new BrechoFeminino(brechos.gerarNumero(), nomeBrecho, tipo, titular, saldo, genero));
+						brechos.atualizar(new BrechoFeminino(numero, nomeBrecho, tipo, titular, saldo, genero));
 					}
 					default -> {
 						System.out.println("Tipo de Brechó inválido!");
